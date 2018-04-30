@@ -1,0 +1,23 @@
+{
+  "name": "e2e-webriverio-node",
+  "version": "1.0.0",
+  "description": "End-to-end test automation template utilising WebDriverIO",
+  "author": "Marc Dacanay",
+  "repository": {
+    "url": "https://github.com/marcdacz/e2e-webriverio-node"
+  },
+  "license": "MIT",
+  "scripts": {
+    "gen-report": "allure generate allure-results --clean -o allure-report || true",
+    "open-report": "allure open allure-report",
+    "test": "./node_modules/.bin/wdio"
+  },
+  "devDependencies": {
+    "allure-commandline": "^2.5.0",
+    "chai": "^4.1.2",
+    "wdio-allure-reporter": "^0.6.1",
+    "wdio-mocha-framework": "^0.5.13",
+    "wdio-selenium-standalone-service": "0.0.10",
+    "webdriverio": "^4.12.0"
+  }
+}
