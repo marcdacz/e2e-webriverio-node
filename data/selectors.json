@@ -1,0 +1,6 @@
+{
+	"todoReact": {
+		"input": "input[class=new-todo]",
+		"todoCount": "span[class=todo-count]"
+	}
+}

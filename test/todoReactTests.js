@@ -3,12 +3,16 @@ describe('todo app using react', () => {
 		browser.url('react/#/');
 	});
 
+	it('should show the correct page title', () => {
+		browser.getTitle().should.equal('React • TodoMVC');
+	});
+
 	it('should allow to create first todo item', () => {
 		browser.waitUntil(function() {
-			return browser.getText('h1') === 'todos'
-		}, 5000);
-
-		browser.setValue('input[class=new-todo]', 'install webdriverio via npm\n');		
-		browser.getText('span[class=todo-count]').should.contain('1 item left');
+			return browser.isExisting(selectors.todoReact.input);
+		}, 10000);		
+		
+		browser.setValue(selectors.todoReact.input, 'install webdriverio via npm\n');		
+		browser.getText(selectors.todoReact.todoCount).should.contain('1 item left');
 	});
 });
