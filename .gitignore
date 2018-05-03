@@ -59,4 +59,6 @@ typings/
 
 /allure-*/
 /errorShots/
+/vscode/
 
+\.vscode/settings\.json
