@@ -2,6 +2,8 @@
 	"todoReact": {
 		"input": "input[class=new-todo]",
 		"todoCount": "span[class=todo-count]",
-		"item": "li"
+		"item": "li[class]",
+		"completedItem": "li[class=completed]",
+		"toggleAll": ".toggle-all"
 	}
 }

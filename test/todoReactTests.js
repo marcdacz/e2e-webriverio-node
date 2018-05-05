@@ -1,10 +1,13 @@
 describe('todo app using react', () => {
 	const toDoReactPage = require('../page/todoReactPage');
-	const firstToDoItem = randomstring.generate(20);
-	const secondToDoItem = randomstring.generate(20);
+	let toDoItem;
 
 	before(() => {
 		browser.url('react/#/');
+	});
+
+	beforeEach(() => {
+		todoItem = faker.lorem.sentence();
 	});
 
 	it('should show the correct page title', () => {
@@ -12,14 +15,22 @@ describe('todo app using react', () => {
 	});
 
 	it('should allow to create first todo item', () => {
-		toDoReactPage.addNewToDoItem(firstToDoItem);
+		toDoReactPage.addNewToDoItem(todoItem);
 		toDoReactPage.getTotalToDoItems().should.contain('1 item left');
-		toDoReactPage.checkIfToDoItemExists(firstToDoItem).should.be.true;
+		toDoReactPage.checkIfToDoItemExists(todoItem).should.be.true;
 	});
 
 	it('should increment total todo when adding another item', () => {
-		toDoReactPage.addNewToDoItem(secondToDoItem);
+		toDoReactPage.addNewToDoItem(todoItem);
 		toDoReactPage.getTotalToDoItems().should.contain('2 items left');
-		toDoReactPage.checkIfToDoItemExists(secondToDoItem).should.be.true;
+		toDoReactPage.checkIfToDoItemExists(todoItem).should.be.true;
 	});
+
+	it('should be able to toggle all todo items as completed', () => {
+		toDoReactPage.toggleAllToDoItems();
+		toDoReactPage.getTotalToDoItems().should.contain('0 items left');
+		toDoReactPage.getAllToDoItems().should.have.ordered.members(toDoReactPage.getAllCompletedToDoItems());
+	});
+
+
 });
